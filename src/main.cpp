@@ -45,14 +45,12 @@ int main(int argc, char* argv[]) {
 					file_name="";
 					cycle=current_agent.simpleHillClimb();
 					//myWorld.cyclePlot(cycle);
-
-
-					//cout<<"\n Saving to file \"Simple_hill_climb_*\"";
-					//cout<<"\nPlease enter file name ending.. \n";
-					//cin>>name;
-					//file_name="./Simple_hill_climb_"+name;
-			    	//cout<<"\nSaving.. "<<file_name;
-					//myWorld.saveCyclePlot(cycle, file_name);
+					cout<<"\n Saving to file \"Simple_hill_climb_*\"";
+					cout<<"\nPlease enter file name ending.. \n";
+					cin>>name;
+					file_name="./Simple_hill_climb_"+name;
+			    	cout<<"\nSaving.. "<<file_name;
+					myWorld.saveCyclePlot(cycle, file_name);
 
 
 				break;
@@ -62,7 +60,7 @@ int main(int argc, char* argv[]) {
 					name="";
 					file_name="";
 					cycle=current_agent.steepestAscendHillClimb();
-					//myWorld.cyclePlot(cycle);
+					myWorld.cyclePlot(cycle);
 					/*
 					cout<<"\n Saving to file \"Steepest_hill_climb_*\"";
 					cout<<"\nPlease enter file name ending.. \n";
@@ -78,7 +76,6 @@ int main(int argc, char* argv[]) {
 		}
 		cout<<"\n Press 1 to continue... \n";
 		cin>>cont;
-		//cont=0;
     }
 
    //TO DO
