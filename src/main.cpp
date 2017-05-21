@@ -44,13 +44,13 @@ int main(int argc, char* argv[]) {
 					name="";
 					file_name="";
 					cycle=current_agent.simpleHillClimb();
-					//myWorld.cyclePlot(cycle);
-					cout<<"\n Saving to file \"Simple_hill_climb_*\"";
-					cout<<"\nPlease enter file name ending.. \n";
-					cin>>name;
-					file_name="./Simple_hill_climb_"+name;
-			    	cout<<"\nSaving.. "<<file_name;
-					myWorld.saveCyclePlot(cycle, file_name);
+					myWorld.cyclePlot(cycle);
+					//cout<<"\n Saving to file \"Simple_hill_climb_*\"";
+					//cout<<"\nPlease enter file name ending.. \n";
+					//cin>>name;
+					//file_name="./Simple_hill_climb_"+name;
+			    	//cout<<"\nSaving.. "<<file_name;
+					///myWorld.saveCyclePlot(cycle, file_name);
 
 
 				break;

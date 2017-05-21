@@ -37,9 +37,11 @@ vector<int> Agent::simpleHillClimb()
 	for (int i = 0; i < myWorld.getNumCities(); i++) cycle.push_back(i);
 	random_shuffle(cycle.begin(), cycle.end());
 	currentCycle=cycle;
-
+	cout<<"\n INITIAL Distance::: "<<get_distance(currentCycle);
+	int k=0;
 	while (flag==true)
 	{
+		k++;
 		successors=get_successors(currentCycle);
 		current_dist=get_distance(currentCycle);
 		int i=0;
@@ -58,7 +60,7 @@ vector<int> Agent::simpleHillClimb()
 		}
 	}
 
-	cout<<"\n FINAL Distance::: "<<get_distance(currentCycle);
+	cout<<"\n FINAL Distance::: "<<get_distance(currentCycle) << " \t Number of Iteration: "<<k;
 	return currentCycle;
 
 }
@@ -74,28 +76,28 @@ vector<int> Agent::steepestAscendHillClimb()
 	for (int i = 0; i < myWorld.getNumCities(); i++) cycle.push_back(i);
 	random_shuffle(cycle.begin(), cycle.end());
 	currentCycle=cycle;
-
+	cout<<"\n INITIAL Distance::: "<<get_distance(currentCycle);
+	int k=0;
 	while (flag==true)
-	{
+	{	k++;
+		flag=false;
 		successors=get_successors(currentCycle);
 		current_dist=get_distance(currentCycle);
 		int i=0;
 		for (i=0;i<successors.size();i++)
 		{
+			current_dist=get_distance(currentCycle);
 			float successor_dist=get_distance(successors[i]);
 			if (successor_dist<current_dist)
 			{
 				currentCycle=successors[i];
 				current_dist=get_distance(currentCycle);
+				flag=true;
 			}
 		}
-		if (i==successors.size())
-		{
-			flag=false;
-		}
-	}
 
-	cout<<"\n FINAL Distance::: "<<get_distance(currentCycle);
+	}
+	cout<<"\n FINAL Distance::: "<<get_distance(currentCycle) << " \t Number of Iteration: "<<k;
 	return currentCycle;
 }
 
@@ -106,10 +108,16 @@ float Agent::get_distance(vector<int> cycle)
 
 	for (int i=0; i+1<cycle.size();i++)
 	{
-			dist+= sqrt(pow((worldPtr->get_coordinates(cycle[i]).first-worldPtr->get_coordinates(cycle[i+1]).first),2) +pow((worldPtr->get_coordinates(cycle[i]).second-worldPtr->get_coordinates(cycle[i+1]).second),2));
+			dist+= sqrt(
+					 pow((worldPtr->get_coordinates(cycle[i]).first-worldPtr->get_coordinates(cycle[i+1]).first),2)
+					+pow((worldPtr->get_coordinates(cycle[i]).second-worldPtr->get_coordinates(cycle[i+1]).second),2)
+					    );
 	}
 
-	dist+=sqrt(pow((worldPtr->get_coordinates(cycle[cycle.size()-1]).first-worldPtr->get_coordinates(cycle[0]).first),2) +pow((worldPtr->get_coordinates(cycle[cycle.size()-1]).second-worldPtr->get_coordinates(cycle[0]).second),2));
+	dist+=sqrt(
+			 pow((worldPtr->get_coordinates(cycle[cycle.size()-1]).first-worldPtr->get_coordinates(cycle[0]).first),2)
+			+pow((worldPtr->get_coordinates(cycle[cycle.size()-1]).second-worldPtr->get_coordinates(cycle[0]).second),2)
+			  );
 	return dist;
 }
 vector<vector<int>> Agent::get_successors(vector<int> cycle)
@@ -121,9 +129,9 @@ vector<vector<int>> Agent::get_successors(vector<int> cycle)
 		for (int j=i+1;j<cycle.size();j++)
 		{
 			vector<int> temp=cycle;
-			int swap_var=cycle[i];
-			cycle[i]=cycle[j];
-			cycle[j]=swap_var;
+			int swap_var=temp[i];
+			temp[i]=temp[j];
+			temp[j]=swap_var;
 			successors.push_back(temp);
 		}
 	}
