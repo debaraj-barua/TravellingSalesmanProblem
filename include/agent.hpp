@@ -15,9 +15,13 @@ class Agent {
         vector<int> steepestAscendHillClimb();
         float get_distance(vector<int>);
         vector<vector<int>> get_successors(vector<int>);
+        //void run();
+        float minimum_distance=0;
+        int number_of_iterations=0;
 
     private:
         World* worldPtr;
         vector<int> currentCycle;
+
 };
 #endif

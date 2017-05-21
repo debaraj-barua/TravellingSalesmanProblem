@@ -86,6 +86,9 @@ void World::cyclePlot(vector<int> cycle)
 }
 
 /***************************************************************/
+/*
+ * Below mentioned functions are added to access private members
+ */
 pair<float,float> World::get_coordinates(int city_index)
 {
 	return (make_pair(coordinates[city_index].first,coordinates[city_index].second));
@@ -95,5 +98,5 @@ string World::get_City(int city_index)
 {
 	return (cityNames[city_index]);
 }
-
+/***************************************************************/
 
