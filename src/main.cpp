@@ -85,7 +85,7 @@ int main(int argc, char* argv[]) {
 				cout<<"\n FINAL Distance::: "<<current_agent.minimum_distance ;
 				cout<< " \n Number of Iterations: "<<current_agent.number_of_iterations;
 				cout<<"\n Execution Time: "<<execution_time;
-				cout<<"\n Press 'Y' to view plot";
+				cout<<"\n Press 'Y' to view plot\n";
 				cin>>plot_opt;
 				if (plot_opt=="Y" or plot_opt=="y")
 					myWorld.cyclePlot(cycle);
