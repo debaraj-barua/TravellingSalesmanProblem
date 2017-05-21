@@ -19,6 +19,7 @@ int main(int argc, char* argv[]) {
 
     int opt=0, cont=1;
     vector<int> cycle;
+    string plot_opt="N";
 
     //vector<vector<int>> cycle_simple_loop;
     //vector<vector<int>> cycle_steepest_loop;
@@ -40,8 +41,9 @@ int main(int argc, char* argv[]) {
 		/*
 		cout<<"\n 3) Random Restart Simple Hill Climb";
 		cout<<"\n 4) Random Restart Steepest Ascent Hill Climb";
-		cout<<"\n``````````````````````````````````````````````````````````````\n";
 		*/
+		cout<<"\n``````````````````````````````````````````````````````````````\n";
+
 		cin>>opt;
 
 		switch (opt)
@@ -61,10 +63,10 @@ int main(int argc, char* argv[]) {
 				cout<<"\n FINAL Distance::: "<<current_agent.minimum_distance;
 				cout<< " \n Number of Iterations: "<<current_agent.number_of_iterations;
 				cout<<"\n Execution Time: "<<execution_time;
-				cout<<"\n Press Enter to view plot";
-				cin.ignore();
-				cin.ignore();
-				myWorld.cyclePlot(cycle);
+				cout<<"\n Press 'Y' to view plot\n";
+				cin>>plot_opt;
+				if (plot_opt=="Y" or plot_opt=="y")
+					myWorld.cyclePlot(cycle);
 
 				break;
 		case 2:
@@ -83,10 +85,10 @@ int main(int argc, char* argv[]) {
 				cout<<"\n FINAL Distance::: "<<current_agent.minimum_distance ;
 				cout<< " \n Number of Iterations: "<<current_agent.number_of_iterations;
 				cout<<"\n Execution Time: "<<execution_time;
-				cout<<"\n Press Enter to view plot";
-				cin.ignore();
-				cin.ignore();
-				myWorld.cyclePlot(cycle);
+				cout<<"\n Press 'Y' to view plot";
+				cin>>plot_opt;
+				if (plot_opt=="Y" or plot_opt=="y")
+					myWorld.cyclePlot(cycle);
 
 
 				break;
